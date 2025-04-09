@@ -8,8 +8,12 @@ record Contact(String username, String email) {
         // здесь должна быть валидация
     }
 
-    Contact(String username) { this(null, null); }
+    Contact(String username) {
+        this(username, UNKNOWN_EMAIL);
+    }
 
 
-    public int compareTo(Contact o) {return 0;}
+    public int compareTo(Contact o) {
+        return this.username.length() < o.username.length() ? 1 : 0;
+    }
 }
