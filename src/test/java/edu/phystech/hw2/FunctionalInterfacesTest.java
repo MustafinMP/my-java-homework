@@ -42,7 +42,14 @@ class IsNumberASquareOfAnotherNumber implements Predicate<Integer> {
 
     @Override
     public boolean test(Integer integer) {
-        return integer == Math.pow(Math.sqrt(integer), 2);
+        int i = 1;
+        do {
+            if (i * i == integer) {
+                return true;
+            }
+            i += 1;
+        } while (i * i <= integer);
+        return false;
     }
 }
 
