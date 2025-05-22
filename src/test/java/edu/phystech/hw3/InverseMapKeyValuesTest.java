@@ -1,9 +1,6 @@
 package edu.phystech.hw3;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -11,7 +8,16 @@ import org.junit.jupiter.api.Test;
 public class InverseMapKeyValuesTest {
 
     public static <K, V> Map<V, Collection<K>> inverse(Map<? extends K, ? extends V> map) {
-        return null;
+        Map<V, Collection<K>> result = new HashMap<>();
+
+        for (Map.Entry<? extends K, ? extends V> entry : map.entrySet()) {
+            K key = entry.getKey();
+            V value = entry.getValue();
+            result.computeIfAbsent(
+                    value, v -> new ArrayList<>()
+            ).add(key);
+        }
+        return result;
     }
 
     @Test
