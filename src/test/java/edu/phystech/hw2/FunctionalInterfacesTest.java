@@ -15,7 +15,14 @@ import org.junit.jupiter.api.Assertions;
 class ToUpperCaseOperator implements UnaryOperator<String> {
     @Override
     public String apply(String s) {
-        return s.toUpperCase();
+        StringBuilder newS = new StringBuilder(s);
+        for (int i = 0; i < s.length(); i++) {
+            if ('a' <= s.charAt(i) && s.charAt(i) <= 'z') {
+                newS.setCharAt(i, (char) ((int) s.charAt(i) - 32));
+            }
+
+        }
+        return newS.toString();
     }
 }
 
@@ -24,7 +31,13 @@ class AbsMaxOperator implements BinaryOperator<Integer> {
 
     @Override
     public Integer apply(Integer integer, Integer integer2) {
-        return Integer.max(Math.abs(integer), Math.abs(integer2));
+        if (integer < 0) {
+            integer *= -1;
+        }
+        if (integer2 < 0) {
+            integer2 *= -1;
+        }
+        return Integer.max(integer, integer2);
     }
 }
 
