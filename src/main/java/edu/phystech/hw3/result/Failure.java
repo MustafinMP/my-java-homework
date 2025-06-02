@@ -10,7 +10,7 @@ public final class Failure<T> implements Result<T> {
 
     @Override
     public boolean isFailure() {
-        return false;
+        return true;
     }
 
     @Override
